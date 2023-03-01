@@ -1,0 +1,24 @@
+﻿@page "/MonitorTaskList"
+@using ServiceReport.Ui.Web.Core.Pages.MonitorTasks.Components.TableList
+@using ServiceReport.Ui.Web.Core.Pages.MonitorTasks.Components.Timeline
+@using ServiceReport.Ui.Web.Core.Parameter;
+
+<PageContainer Title="监控预警">
+        <Breadcrumb>
+        <Breadcrumb>
+            <BreadcrumbItem>ServiceReport</BreadcrumbItem>
+            <BreadcrumbItem>监控预警</BreadcrumbItem>
+        </Breadcrumb>
+     
+    </Breadcrumb>
+        <ChildContent>
+      <Row Gutter="24">
+        <AntDesign.Col Lg="14" Md="24">
+            <MonitorTableList></MonitorTableList>
+             </AntDesign.Col>
+        <AntDesign.Col Lg="10" Md="24">
+         <MonitorTimelineList></MonitorTimelineList>
+        </AntDesign.Col>
+    </Row>
+           </ChildContent>
+</PageContainer>

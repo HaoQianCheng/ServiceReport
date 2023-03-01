@@ -1,0 +1,24 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.MonitorTasks.Components.Timeline
+
+<Card Style="margin-bottom: 24px;" Title="告警列表">
+    <Spin Spinning=loading Delay="500">
+    <Timeline Pending="pending" Reverse=@bReverse>
+        @{
+            foreach (var item in monitorWarnings)
+            {
+                <TimelineItem Color="red">
+                    <p>@item.Content</p>
+                    <p>@item.CreateTime.ToString()</p>
+                </TimelineItem>
+            }
+
+        }
+    </Timeline>
+        </Spin>
+</Card>
+@code {
+    private bool bReverse { get; set; } = true;
+    RenderFragment pending = @<Template>
+        Recording...
+    </Template>;
+}

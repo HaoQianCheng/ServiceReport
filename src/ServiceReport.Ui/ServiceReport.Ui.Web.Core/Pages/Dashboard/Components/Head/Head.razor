@@ -1,0 +1,79 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.Dashboard.Components.Head
+@using Masuit.Tools.Linq;
+@using ServiceReport.Core.Model;
+@using ServiceReport.Ui.Web.Core.Parameter;
+@using System.Linq.Expressions;
+
+<AntDesign.Col Xs="24" Sm="12" Md="12" Lg="12" Xl="6" Style="margin-bottom: 24px;">
+    <ChartCard  Title="请求总数"
+               Total="@RequestCounts.ToString()"
+               ContentHeight="0"
+               IconType="sound"
+               Theme="twotone">
+        <ChildContent>
+            @*<Trend Flag="up">
+            WoW Change
+            <span class="trendText">12%</span>
+            </Trend>
+            <Trend Flag="down">
+            DoD Change
+            <span class="trendText">11%</span>
+            </Trend>*@
+        </ChildContent>
+    </ChartCard>
+</AntDesign.Col>
+<AntDesign.Col Xs="24" Sm="12" Md="12" Lg="12" Xl="6" Style="margin-bottom: 24px;">
+    <ChartCard Title="错误总数"
+               Total="@RequestErrorCounts.ToString()"
+               ContentHeight="0"
+               IconType="highlight"
+               Theme="twotone">
+        <ChildContent>
+            @*<Trend Flag="up">
+            WoW Change
+            <span class="trendText">12%</span>
+            </Trend>
+            <Trend Flag="down">
+            DoD Change
+            <span class="trendText">11%</span>
+            </Trend>*@
+        </ChildContent>
+    </ChartCard>
+</AntDesign.Col>
+<AntDesign.Col Xs="24" Sm="12" Md="12" Lg="12" Xl="6" Style="margin-bottom: 24px;">
+    <ChartCard Title="服务"
+               Total="@InStanceCounts.ToString()"
+               ContentHeight="0"
+               IconType="pie-chart"
+               Theme="twotone">
+        <ChildContent>
+
+            @*<Trend Flag="up">
+            WoW Change
+            <span class="trendText">12%</span>
+            </Trend>
+            <Trend Flag="down">
+            DoD Change
+            <span class="trendText">11%</span>
+            </Trend>*@
+        </ChildContent>
+    </ChartCard>
+</AntDesign.Col>
+<AntDesign.Col Xs="24" Sm="12" Md="12" Lg="12" Xl="6" Style="margin-bottom: 24px;">
+    <ChartCard Title="报警"
+               Total="@WarningCounts.ToString()"
+               ContentHeight="0"
+               IconType="alert"
+               Theme="twotone">
+        <ChildContent>
+            @*<Trend Flag="up">
+            WoW Change
+            <span class="trendText">12%</span>
+            </Trend>
+            <Trend Flag="down">
+            DoD Change
+            <span class="trendText">11%</span>
+            </Trend>*@
+        </ChildContent>
+    </ChartCard>
+</AntDesign.Col>

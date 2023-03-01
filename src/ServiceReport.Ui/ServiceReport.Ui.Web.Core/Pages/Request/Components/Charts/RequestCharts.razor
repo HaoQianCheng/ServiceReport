@@ -1,0 +1,15 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.Request.Components.Charts
+<Card Style="height:300px">
+    <CardTabs>
+        <Tabs ActiveKeyChanged="LoadAsync">
+            <ChildContent>
+                <TabPane Key="1" Tab="Path调用">
+                        <Bar @ref="PathChart" Config="PathConfig" Data="PathData" />
+                </TabPane>
+                <TabPane Key="2" Tab="调用总数">
+                    <AntDesign.Charts.Area @ref="RequestCountChart" Config=" RequestCountConfig" Data="RequestCountData" OnFirstRender="GetRequestCountData" />
+                </TabPane>
+            </ChildContent>
+        </Tabs>
+    </CardTabs>
+</Card>

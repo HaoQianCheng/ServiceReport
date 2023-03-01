@@ -1,0 +1,132 @@
+﻿@namespace ServiceReport.Ui.Web.Core
+@using ServiceReport.Ui.Web.Core.Parameter;
+@inherits LayoutComponentBase
+
+<AntDesign.ProLayout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+                                 MenuData="_menuData">
+    <RightContentRender>
+        <Space Size="@("24")">
+            <SpaceItem Style="">
+                <RangePicker TValue="DateTime?[]" OnChange="SearchChartCreateTimeOnRangeChange" OnClearClick="ClearChartCreateTimeOnRangeChange" DefaultValue="new DateTime?[] { Search.SearchChartBCreateTime, Search.SearchChartECreateTime}" Ranges="dayRanges" ShowTime="true" Style="border:0px solid #d9d9d9" />
+            </SpaceItem>
+          @*  <SpaceItem Style="">
+                自动执行
+                <Switch @bind-Checked="globalTiming.Voluntarily" OnChange="Timing" />
+            
+            </SpaceItem>*@
+       @*            <SpaceItem Style="">
+
+            <Input @bind-Value="globalTiming.interval" />
+            </SpaceItem>*@
+
+        </Space>
+    </RightContentRender>
+    <ChildContent>
+        <CascadingValue Value="@Search">
+            <article class="content px-4">
+                @Body
+            </article>
+        </CascadingValue>
+    </ChildContent>
+    <FooterRender>
+        <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+    </FooterRender>
+</AntDesign.ProLayout.BasicLayout>
+<SettingDrawer />
+
+@code
+{
+
+    [Inject] private IDbContextFactory<ApplicationContext> DbFactory { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    private GlobalSearch Search = new GlobalSearch();
+
+    #region 时间选择
+    private void SearchChartCreateTimeOnRangeChange(DateRangeChangedEventArgs args)
+    {
+        Search.SearchChartBCreateTime = args.Dates[0];
+        Search.SearchChartECreateTime = args.Dates[1];
+    }
+    private void ClearChartCreateTimeOnRangeChange()
+    {
+        Search.SearchChartBCreateTime = null;
+        Search.SearchChartECreateTime = null;
+    }
+
+    Dictionary<string, DateTime?[]> dayRanges = new Dictionary<string, DateTime?[]>() {
+        { "近三天",new DateTime?[] { DateTime.Now.AddDays(-3), DateTime.Now }},
+        { "近一周",new DateTime?[] { DateTime.Now.AddDays(-7), DateTime.Now }},
+        { "近三周",new DateTime?[] { DateTime.Now.AddDays(-21), DateTime.Now }},
+        { "近一个月",new DateTime?[] { new DateTime(DateTime.Now.Year,DateTime.Now.Month,1), new DateTime(DateTime.Now.Year,DateTime.Now.Month,1).AddMonths(1).AddDays(-1) }},
+
+    };
+    #endregion
+
+    #region 自动执行
+
+    GlobalTiming globalTiming = new GlobalTiming();
+    public async void Timing()
+    {
+        //await ProtectedSessionStore.SetAsync("globalTiming", globalTiming);
+    }
+
+    #endregion
+
+    private readonly MenuDataItem[] _menuData =
+    {
+        new MenuDataItem
+        {
+            Path = "/",
+            Name = "welcome",
+            Key = "welcome",
+            Icon = "smile",
+        },
+        new MenuDataItem
+        {
+            Path="/RequestList",
+            Name = "请求列表",
+            Key = "request",
+            Icon = "smile",
+        }   ,
+           new MenuDataItem
+        {
+            Path="/MonitorTaskList",
+            Name = "监控预警",
+            Key = "MonitorTaskList",
+            Icon = "smile",
+        }   ,
+
+
+    };
+
+    public LinkItem[] Links { get; set; } =
+    {
+    //new LinkItem
+    //{
+    //    Key = "Ant Design Blazor",
+    //    Title = "Ant Design Blazor",
+    //    Href = "https://antblazor.com",
+    //    BlankTarget = true,
+    //},
+    //new LinkItem
+    //{
+    //    Key = "github",
+    //    Title = (RenderFragment)(@<Icon Type="github" />),
+    //    Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
+    //    BlankTarget = true,
+    //},
+    //new LinkItem
+    //{
+    //    Key = "Blazor",
+    //    Title = "Blazor",
+    //    Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
+    //    BlankTarget = true,
+    //}
+    };
+
+}

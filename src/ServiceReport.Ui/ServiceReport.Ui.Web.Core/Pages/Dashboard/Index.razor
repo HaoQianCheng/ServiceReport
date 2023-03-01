@@ -1,0 +1,17 @@
+﻿@page "/"
+@using ServiceReport.Ui.Web.Core.Pages.Dashboard.Components
+@using ServiceReport.Ui.Web.Core.Pages.Dashboard.Components.Head
+@using ServiceReport.Ui.Web.Core.Parameter;
+
+
+<GridContent>
+    <Row Type="flex" Gutter="24">
+        <Head @ref="head" GlobalSearch="GlobalSearch">
+        </Head>
+    </Row>
+    <Row Gutter="24">
+        <ServiceReport.Ui.Web.Core.Pages.Dashboard.Components.Body.Body @ref="body" GlobalSearch="GlobalSearch">
+        </ServiceReport.Ui.Web.Core.Pages.Dashboard.Components.Body.Body>
+    </Row>
+
+</GridContent>

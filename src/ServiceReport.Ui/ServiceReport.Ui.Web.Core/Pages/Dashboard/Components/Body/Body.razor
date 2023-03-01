@@ -1,0 +1,44 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.Dashboard.Components.Body
+@using Masuit.Tools.Linq;
+@using ServiceReport.Core.Model;
+@using ServiceReport.Ui.Web.Core.Parameter;
+@using System.Linq.Expressions;
+
+<AntDesign.Col Xl="16" Lg="24" Md="24" Sm="24" Xs="24">
+    <Card Class="projectList"
+          Style="margin-bottom: 24px;height:300px"
+          Title="服务调用">
+        <ChildContent>
+            <Line @ref="chart2" Config="config2" OnFirstRender="Line" />
+
+        </ChildContent>
+    </Card>
+
+    <Card Style="height:331px"
+          Class="activeCard"
+          Title="热力图">
+        <ChildContent>
+                <Heatmap @ref="chart1" Config="config1" OnFirstRender="Heatmap" />
+        </ChildContent>
+    </Card>
+
+</AntDesign.Col>
+
+<AntDesign.Col Xl="8" Lg="24" Md="24" Sm="24" Xs="24">
+    <Card Style="margin-bottom: 24px;height:200px"
+          Title="服务调用">
+            <Bar @ref="chart3" Config="config3" OnFirstRender="Bar1" />
+    </Card>
+
+    <Card Style="margin-bottom: 24px;height:200px"
+          Title="慢服务">
+            <Bar @ref="chart4" Config="config4" OnFirstRender="Bar2" />
+    </Card>
+
+    <Card BodyStyle="padding-top: 12px; padding-bottom: 12px;height:150px"
+          Title="错误服务">
+            <Bar @ref="chart5" Config="config5" OnFirstRender="Bar3" />
+    </Card>
+</AntDesign.Col>
+
+

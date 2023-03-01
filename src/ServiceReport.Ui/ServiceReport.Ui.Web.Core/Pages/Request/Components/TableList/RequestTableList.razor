@@ -1,0 +1,231 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.Request.Components.TableList
+@using ServiceReport.Core.Model;
+
+<Card Class="listCard" Style="margin-top: 24px;" Title="数据列表">
+      <Spin Spinning=loading >
+    <Card Bordered="false">
+
+            <Table Style="margin-top: 24px;"
+                   @ref="Table"
+                   TItem="RequestInfo"
+                   DataSource="@requests"
+                   OnChange="OnChange"
+                   Size=@TableSize.Small
+                   @bind-Total="TotalCount"
+                   @bind-PageIndex="PageIndex"
+                   @bind-PageSize="PageSize"
+                   Bordered=@true
+                   ScrollX="1200"
+                   Responsive>
+
+                <PropertyColumn Property="c=>c.Id" Fixed="left" Width="100" Filterable >@context.Id</PropertyColumn>
+                <PropertyColumn Property="c=>c.Instance" Fixed="left" Width="100" Filterable>@context.Instance</PropertyColumn>
+                <PropertyColumn Property="c=>c.RequestType" Filterable  >@context.RequestType</PropertyColumn>
+                <PropertyColumn Property="c=>c.Url" Width="200" Filterable>@context.Url</PropertyColumn>
+                <PropertyColumn Property="c=>c.Method" Filterable>@context.Method</PropertyColumn>
+                <PropertyColumn Property="c=>c.StatusCode" Filterable>
+                    @{
+                        var color = "green";
+                        if (context.StatusCode != 200)
+                        {
+                            color = "volcano";
+                        }
+                        <Tag Color="@color">@context.StatusCode</Tag>
+                    }
+                </PropertyColumn>
+                <PropertyColumn Property="c=>c.RemoteIP" Filterable>@context.RemoteIP</PropertyColumn>
+                <PropertyColumn Property="c=>c.TraceMilliseconds" Sortable Filterable>
+                    @{
+                        var color = "green";
+                        if (context.TraceMilliseconds >= 100)
+                        {
+                            color = "volcano";
+                        }
+                        <Tag Color="@color">@context.TraceMilliseconds</Tag>
+                    }
+                </PropertyColumn>
+                <PropertyColumn Property="c=>c.CreateTime" Width="200" Filterable Sortable DefaultSortOrder="@SortDirection.Descending">@context.CreateTime</PropertyColumn>
+                <PropertyColumn Property="c=>c.AccountName" Filterable> @context.AccountName</PropertyColumn>
+                <ActionColumn Title="Action" Fixed="right">
+                    <Space Size=@("middle")>
+                        <SpaceItem>
+                            <a @onclick="()=>DrawerOpenAsync(context.Id)">详情</a>
+                        </SpaceItem>
+                    </Space>
+                </ActionColumn>
+            </Table>
+     
+    </Card>
+    </Spin>
+</Card>
+
+<Drawer Visible="@visible" Placement="right" Title='("详情")' OnClose="_ => DrawerClose()" Width="640">
+    <Text Strong="true">基本信息</Text>
+
+    <Row Gutter="12">
+        <Col Span="4">
+        <Text Strong="true">Id:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.Id</Text>
+        </Col>
+        <Col Span="4">
+        <Text Strong="true">请求类型:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.RequestType</Text>
+        </Col>
+    </Row>
+    <Row Gutter="12">
+        <Col Span="4">
+        <Text Strong="true">实例地址:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.Instance</Text>
+        </Col>
+        <Col Span="4">
+        <Text Strong="true">行为:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.Method</Text>
+        </Col>
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">请求路径:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerInfolData.Url
+        </Text>
+        </Col>
+
+    </Row>
+    <Row Gutter="12">
+        <Col Span="4">
+        <Text Strong="true">请求状态:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.StatusCode</Text>
+        </Col>
+        <Col Span="4">
+        <Text Strong="true">远程IP:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.RemoteIP</Text>
+        </Col>
+    </Row>
+    <Row Gutter="12">
+        <Col Span="4">
+        <Text Strong="true">执行时长:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.TraceMilliseconds</Text>
+        </Col>
+        <Col Span="4">
+        <Text Strong="true">创建时间:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.CreateTime</Text>
+        </Col>
+    </Row>
+    <Row Gutter="12">
+        <Col Span="4">
+        <Text Strong="true">账户名称:</Text>
+        </Col>
+        <Col Span="8">
+        <Text>@DrawerInfolData.AccountName</Text>
+        </Col>
+    </Row>
+    <Divider></Divider>
+    <Text Strong="true">详细信息</Text>
+    <Row></Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">Cookie:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.Cookie
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">Header:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.Header
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">QueryString:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.QueryString
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">RequestBody:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.RequestBody
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">ResponseBody:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.ResponseBody
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">Scheme:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.Scheme
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">ErrorMessage:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.ErrorMessage
+        </Text>
+        </Col>
+
+    </Row>
+    <Row>
+        <Col Span="4">
+        <Text Strong="true">ErrorStack:</Text>
+        </Col>
+        <Col Span="20">
+        <Text Strong="false">
+                @DrawerDetailData.ErrorStack
+        </Text>
+        </Col>
+
+    </Row>
+</Drawer>

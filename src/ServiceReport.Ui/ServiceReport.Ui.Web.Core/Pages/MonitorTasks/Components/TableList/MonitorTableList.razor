@@ -1,0 +1,168 @@
+﻿@namespace ServiceReport.Ui.Web.Core.Pages.MonitorTasks.Components.TableList
+@using ServiceReport.Ui.Storage.Model;
+@using ServiceReport.Ui.Web.Core.Pages.MonitorTasks.Components.Timeline;
+
+<Card Style="margin-bottom: 24px;" Title="任务列表">
+    <Button OnClick="OpenAddAsync" Type="primary" Style="margin-bottom:16px">
+        新增任务
+    </Button>
+    <Spin Spinning=Loading>
+
+        <Table Style="margin-top: 24px;" @ref="Table"
+               TItem="MonitorTask"
+               DataSource="@monitorTasks"
+               OnChange="OnChangeAsync"
+               Size=@TableSize.Small
+               Total="TotalCount"
+               PageIndex="PageIndex"
+               PageSize="PageSize"
+               Bordered=@true
+               ScrollX="800"
+               >
+            <PropertyColumn Property="c=>c.InstanceName" Fixed="left" Width="100" Filterable>@context.InstanceName</PropertyColumn>
+            <PropertyColumn Property="c=>c.TaskName" Fixed="left" Filterable>@context.TaskName</PropertyColumn>
+            <PropertyColumn Property="c=>c.Id" Hidden="true">@context.Id</PropertyColumn>
+            <PropertyColumn Property="c=>c.Priority">
+                @{
+                    var value = Priority[@context.Priority];
+
+                    if (value != null)
+                    {
+                        <Tag Color="@value.Color">@value.Value</Tag>
+                    }
+                }
+
+            </PropertyColumn>
+
+            <PropertyColumn Property="c=>c.Description" Filterable>@context.Description</PropertyColumn>
+            <PropertyColumn Property="c=>c.IsOpen" Filterable>
+                <Switch Size="small" Checked="@context.IsOpen" />
+            </PropertyColumn>
+            <PropertyColumn Property="c=>c.CreateTime" DefaultSortOrder="@SortDirection.Descending"  Filterable>@context.CreateTime</PropertyColumn>
+            <ActionColumn Title="Action" Fixed="right">
+                <Space Size=@("middle")>
+                    <SpaceItem>
+                        <a @onclick="()=>OpenEditAsync(context.Id)">编辑</a>
+                        <a @onclick="()=>DeleteAsync(context.Id)">删除</a>
+                    </SpaceItem>
+                </Space>
+            </ActionColumn>
+        </Table>
+    </Spin>
+</Card>
+<Modal Title="@("新建任务")"
+       Visible="@VisibleAdd"
+       OkText="@("确认")"
+       CancelText="@("取消")"
+       OnOk="()=>{FormAdd.Submit();}"
+       OnCancel="()=>{VisibleAdd = false;}">
+
+    <Form @ref="@FormAdd"
+          Model="@ModelAdd"
+          LabelCol="new ColLayoutParam { Span = 4 }"
+          WrapperCol="new ColLayoutParam { Span = 16 }"
+          OnFinish="OnFinishAsync">
+        <FormItem Label="任务标题">
+            <Input @bind-Value="@context.TaskName" />
+        </FormItem>
+        <FormItem Label="说明">
+            <TextArea @bind-Value="@context.Description" />
+        </FormItem>
+
+        <FormItem Label="优先级">
+            <Select TItem="PriorityOption"
+                    TItemValue="int"
+                    DataSource="@PriorityOptionSelects"
+                    @bind-Value="@context.Priority"
+                    DefaultValue="1"
+                    ValueName="@nameof(PriorityOption.Value)"
+                    LabelName="@nameof(PriorityOption.Label)"
+                    Placeholder="请选择"
+                    Style="width:250px;">
+            </Select>
+        </FormItem>
+        <FormItem Label="实例">
+            <Select TItem="InstanceOption"
+                    TItemValue="string"
+                    DataSource="@InstanceSelects"
+                    @bind-Value="@context.InstanceName"
+                    ValueName="@nameof(InstanceOption.Value)"
+                    LabelName="@nameof(InstanceOption.Label)"
+                    Placeholder="请选择"
+                    Style="width:250px;">
+            </Select>
+        </FormItem>
+        <FormItem Label="邮箱">
+            <Input @bind-Value="@context.Email" />
+        </FormItem>
+        <FormItem Label="开关">
+            <Switch @bind-Value="@context.IsOpen" />
+        </FormItem>
+        <FormItem Label="超时监控配置">
+            开关  <Switch @bind-Value="@context.TimeOutIsOpen" />
+            超时时间         <AntDesign.InputNumber @bind-Value="@context.TimeOutTime" Min="0" Max="1000000" PlaceHolder="执行毫秒"></AntDesign.InputNumber>
+
+        </FormItem>
+    </Form>
+</Modal>
+<Modal Title="@("修改任务")"
+       Visible="@VisibleEdit"
+       OkText="@("确认")"
+       CancelText="@("取消")"
+       OnOk="()=>{FormEdit.Submit();}"
+       OnCancel="()=>{VisibleEdit = false;}">
+
+    <Form @ref="@FormEdit"
+          Model="@ModelEdit"
+          LabelCol="new ColLayoutParam { Span = 4 }"
+          WrapperCol="new ColLayoutParam { Span = 16 }"
+          OnFinish="OnFinishEditAsync">
+        <FormItem Label="任务标题">
+            <Input @bind-Value="@context.TaskName" />
+        </FormItem>
+        <FormItem Label="说明">
+            <TextArea @bind-Value="@context.Description" />
+        </FormItem>
+
+        <FormItem Label="优先级">
+            <Select TItem="PriorityOption"
+                    TItemValue="int"
+                    DataSource="@PriorityOptionSelects"
+                    @bind-Value="@context.Priority"
+                    DefaultValue="1"
+                    ValueName="@nameof(PriorityOption.Value)"
+                    LabelName="@nameof(PriorityOption.Label)"
+                    Placeholder="请选择"
+                    Style="width:250px;">
+            </Select>
+        </FormItem>
+        <FormItem Label="实例">
+            <Select TItem="InstanceOption"
+                    TItemValue="string"
+                    DataSource="@InstanceSelects"
+                    @bind-Value="@context.InstanceName"
+                    ValueName="@nameof(InstanceOption.Value)"
+                    LabelName="@nameof(InstanceOption.Label)"
+                    Placeholder="请选择"
+                    Style="width:250px;">
+            </Select>
+        </FormItem>
+        <FormItem Label="邮箱">
+            <Input @bind-Value="@context.Email" />
+        </FormItem>
+        <FormItem Label="开关">
+            <Switch @bind-Value="@context.IsOpen" />
+        </FormItem>
+        <FormItem Label="超时监控配置">
+            开关  <Switch @bind-Value="@context.TimeOutIsOpen" />
+            超时时间         <AntDesign.InputNumber @bind-Value="@context.TimeOutTime" Min="0" Max="1000000" PlaceHolder="执行毫秒"></AntDesign.InputNumber>
+
+        </FormItem>
+    </Form>
+</Modal>
+@code {
+    private bool bReverse { get; set; } = true;
+    RenderFragment pending = @<Template>
+        Recording...
+    </Template>;
+}

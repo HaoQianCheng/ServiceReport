@@ -1,0 +1,49 @@
+﻿@page "/RequestList"
+@using Microsoft.Extensions.Logging;
+@using ServiceReport.Ui.Web.Core.Pages.Request.Components.Charts
+@using ServiceReport.Ui.Web.Core.Pages.Request.Components.TableList
+@using ServiceReport.Ui.Web.Core.Parameter;
+
+<PageContainer Title="请求列表">
+    <Breadcrumb>
+        <Breadcrumb>
+            <BreadcrumbItem>ServiceReport</BreadcrumbItem>
+            <BreadcrumbItem>请求列表</BreadcrumbItem>
+        </Breadcrumb>
+    </Breadcrumb>
+    <Content>
+        <GridRow Gutter="16">
+            <GridCol Class="gutter-row" Span="6">
+                <Space Size="@("24")" Style="width:100%">
+                    <SpaceItem>
+                        <b> $Service：</b>
+                        <SimpleSelect DefaultValue="" Style="width:250px;" OnSelectedItemChanged="SelectedAsync">
+                            <SelectOptions>
+                                @{
+                                    foreach (var item in Instance)
+                                    {
+                                        <SimpleSelectOption Value="@item.Value" Label="@item.Key"></SimpleSelectOption>
+                                    }
+                                }
+
+                            </SelectOptions>
+                        </SimpleSelect>
+                    </SpaceItem>
+                </Space>
+            </GridCol>
+            <GridCol Class="gutter-row" Span="6">
+
+            </GridCol>
+            <GridCol Class="gutter-row" Span="6">
+
+            </GridCol>
+            <GridCol Class="gutter-row" Span="6">
+
+            </GridCol>
+        </GridRow>
+    </Content>
+    <ChildContent>
+        <RequestCharts @ref="charts" GlobalSearch="@GlobalSearch"></RequestCharts>
+        <RequestTableList @ref="tableList" GlobalSearch="@GlobalSearch"></RequestTableList>
+    </ChildContent>
+</PageContainer>
