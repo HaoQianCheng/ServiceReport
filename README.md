@@ -1,6 +1,6 @@
 # ServiceReport
 
-![image-20230301231817726](C:\Users\qianc\AppData\Roaming\Typora\typora-user-images\image-20230301231817726.png)
+![image-20230301231817726](https://user-images.githubusercontent.com/86709205/222441329-28940016-ae86-462a-b28d-40b795b7f24e.png)
 
 
 
@@ -19,6 +19,7 @@ The attempt page uses the **Ant Design for Blazor** framework.
   ```
 
   ![image-20230302202518443](C:\Users\qianc\AppData\Roaming\Typora\typora-user-images\image-20230302202518443.png)
+  ![image-20230302202518443](https://user-images.githubusercontent.com/86709205/222441354-7b4765c2-980c-4034-8d4c-6fcec0473aef.png)
 
   
 
@@ -68,5 +69,5 @@ The attempt page uses the **Ant Design for Blazor** framework.
 
 * Step 3: 下载 tem/ServiceReport.Ui.Web 模板
 
-​	![image-20230302212110974](C:\Users\qianc\AppData\Roaming\Typora\typora-user-images\image-20230302212110974.png)
+  ![image-20230302212110974](https://user-images.githubusercontent.com/86709205/222441397-88ff73c5-f73c-4067-9152-72853dc1eef8.png) 
 
