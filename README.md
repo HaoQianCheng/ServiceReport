@@ -14,7 +14,13 @@ The attempt page uses the **Ant Design for Blazor** framework.
 
 * Step 1: Introduce the nuget package
 
-  xxxxx
+  ```c#
+  NuGet\Install-Package ServiceReport -Version 1.0.0
+  ```
+
+  ![image-20230302202518443](C:\Users\qianc\AppData\Roaming\Typora\typora-user-images\image-20230302202518443.png)
+
+  
 
 * Step 2:Modify the appsetting.json file of the project
 
@@ -36,13 +42,31 @@ The attempt page uses the **Ant Design for Blazor** framework.
     }
   ```
 
-  Parameter Specification:
+  > Parameter Specification:
+  >
+  > ​	ServiceReportSendOptions-
+  >
+  > ​		PushAddress(Service address for sending data)
+  >
+  > ​		PushSecond(Data sent per second)
+  >
+  > ​		PushCount(Amount of data sent at a time)
+  >
+  > ​	Server(Service address)
+  >
+  > ​	ServiceName(Service name)
+  >
+  > ​	RecordRequest(Whether to record request)
+  >
+  > ​	RecordResponse(Whether to record response)
+  >
+  > ​	RecordCookie(Whether to record cookie)
+  >
+  > ​	RecordHeader(Whether to record http header)
+  >
+  > ​	RecordHeader(Filter path)
 
-  ServiceReportSendOptions-
+* Step 3: 下载 tem/ServiceReport.Ui.Web 模板
 
-  ​	PushAddress(Service address for sending data)
-
-  ​	PushSecond(Data sent per second)
-
-  ​	PushCount(Amount of data sent at a time)
+​	![image-20230302212110974](C:\Users\qianc\AppData\Roaming\Typora\typora-user-images\image-20230302212110974.png)
 
