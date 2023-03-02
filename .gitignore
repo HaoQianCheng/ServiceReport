@@ -43,3 +43,6 @@
 /src/ServiceReport.Core/bin/Release
 /ServiceReport.Dashboard/ServiceReport.Dashboard.csproj.user
 /src/ServiceReport.Ui/ServiceReport.Ui.Storage/bin/Release
+/tmp/ServiceReport.Ui.Web/obj
+/tmp/ServiceReport.Ui.Web/bin
+*.user
