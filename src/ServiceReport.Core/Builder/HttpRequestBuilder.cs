@@ -66,6 +66,7 @@ public class HttpRequestBuilder : IRequestBuilder
         if (context.Items.ContainsKey(ServiceReportConst.CreateTime))
         {
             request.CreateTime = Convert.ToDateTime(context.Items[ServiceReportConst.CreateTime]);
+            request.CreateTimeStr = request.CreateTime.ToString("yyyy-MM-dd HH:mm");
         }
 
         //Account

@@ -11,9 +11,7 @@
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ServiceReport.Core\ServiceReport.Core.csproj" />
     <ProjectReference Include="..\ServiceReport.Ui.Core\ServiceReport.Ui.Core.csproj" />
-    <ProjectReference Include="..\ServiceReport.Ui.Storage\ServiceReport.Ui.Storage.csproj" />
     <ProjectReference Include="..\ServiceReport.Ui.Web.Core\ServiceReport.Ui.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
