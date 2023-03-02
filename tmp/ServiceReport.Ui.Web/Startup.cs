@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ServiceReport.Ui.Core;
 
-namespace ServiceReport.Dashboard
+namespace ServiceReport.Ui.Web
 {
     public class Startup
     {

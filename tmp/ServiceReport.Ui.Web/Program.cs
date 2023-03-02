@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace ServiceReport.Dashboard
+namespace ServiceReport.Ui.Web
 {
     public class Program
     {
