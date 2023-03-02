@@ -31,3 +31,15 @@
 /ServiceReport.Ui.Web.Core/obj
 /.vs
 /test/UI/UI.csproj.user
+/src/ServiceReport.Saver.Http/bin/Release/net7.0
+/src/ServiceReport.Saver.Abstract/bin/Release/net7.0
+/src/ServiceReport/bin/Release
+/ServiceReport.Dashboard/obj
+/ServiceReport.Dashboard/bin/Release/net7.0
+/test/ApiService/bin/Release/net7.0
+/src/ServiceReport.Ui/ServiceReport.Ui.Web.Core/bin/Release
+/src/ServiceReport.Ui/ServiceReport.Ui.Web/bin/Release/net7.0
+/src/ServiceReport.Ui/ServiceReport.Ui.Core/bin/Release
+/src/ServiceReport.Core/bin/Release
+/ServiceReport.Dashboard/ServiceReport.Dashboard.csproj.user
+/src/ServiceReport.Ui/ServiceReport.Ui.Storage/bin/Release
