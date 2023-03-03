@@ -19,8 +19,16 @@ The attempt page uses the **Ant Design for Blazor** framework.
   ```
 
   ![image-20230302202518443](https://user-images.githubusercontent.com/86709205/222441354-7b4765c2-980c-4034-8d4c-6fcec0473aef.png)
-
   
+  ```c#  
+  //new
+  builder.Services.AddServiceReportModule().AddServiceReportSendHttpModule();
+  ```
+
+  ```c#
+  //new
+  app.UseHttpReports();
+  ```
 
 * Step 2:Modify the appsetting.json file of the project
 
