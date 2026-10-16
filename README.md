@@ -1,5 +1,11 @@
 # ServiceReport
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![.NET 7](https://img.shields.io/badge/.NET-7.0-512BD4.svg)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-10.0-239120.svg)](https://docs.microsoft.com/dotnet/csharp/)
+[![Blazor Server](https://img.shields.io/badge/UI-Blazor_Server-5C2D91.svg)](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+[![MySQL](https://img.shields.io/badge/Storage-MySQL-4479A1.svg)](https://www.mysql.com/)
+
 简体中文 | [English](README_EN.md)
 
 ServiceReport 是面向 ASP.NET Core 服务的请求监控项目，包含采集中间件、HTTP 批量上报、MySQL 存储，以及基于 Blazor Server 和 Ant Design 的可视化界面。可用于查看服务请求、耗时和异常信息，辅助业务分析与问题排查。
@@ -39,11 +45,11 @@ test/
 ├── ApiService/                      # 接入 ServiceReport 的示例 API
 ├── Console/                         # 控制台占位示例
 └── UI/                              # 使用 HttpReports 包的独立示例
-tmp/
+templates/
 └── ServiceReport.Ui.Web/             # 使用 NuGet UI 包的主机模板
 ```
 
-`test/UI` 使用的是 `HttpReports.Dashboard` 和 `HttpReports.MySQL`，不是本文启动的 ServiceReport UI。模板的正确路径是 [`tmp/ServiceReport.Ui.Web`](tmp/ServiceReport.Ui.Web)，不是 `tem/ServiceReport.Ui.Web`。
+`test/UI` 使用的是 `HttpReports.Dashboard` 和 `HttpReports.MySQL`，不是本文启动的 ServiceReport UI。包引用方式的主机模板位于 [`templates/ServiceReport.Ui.Web`](templates/ServiceReport.Ui.Web)。
 
 ## 环境要求
 
@@ -168,7 +174,7 @@ app.Run();
 
 ### 使用独立 UI 模板
 
-可复制 [`tmp/ServiceReport.Ui.Web`](tmp/ServiceReport.Ui.Web) 作为包引用方式的 UI 主机。它引用 `ServiceReport.Ui.Core` 和 `ServiceReport.Ui.Web.Core` 的 `1.0.0` 包，需另外核对包源可用性；数据库准备和配置要求与源码 UI 相同。不要与源码 UI 同时占用默认端口。
+可复制 [`templates/ServiceReport.Ui.Web`](templates/ServiceReport.Ui.Web) 作为包引用方式的 UI 主机。它引用 `ServiceReport.Ui.Core` 和 `ServiceReport.Ui.Web.Core` 的 `1.0.0` 包，需另外核对包源可用性；数据库准备和配置要求与源码 UI 相同。不要与源码 UI 同时占用默认端口。
 
 ![原有 UI 模板示例](https://user-images.githubusercontent.com/86709205/222441397-88ff73c5-f73c-4067-9152-72853dc1eef8.png)
 
@@ -184,6 +190,6 @@ app.Run();
 
 ## 贡献与许可证
 
-欢迎通过 [Issues](https://github.com/HaoQianCheng/ServiceReport/issues) 反馈可复现的问题，或提交说明清楚的 Pull Request。提交前请移除凭据和真实请求数据，并注明使用的 .NET、数据库版本及复现步骤。
+欢迎通过 [Issues](https://github.com/HaoQianCheng/ServiceReport/issues) 反馈可复现的问题，或提交说明清楚的 Pull Request，参与指引见 [CONTRIBUTING.md](CONTRIBUTING.md)。提交前请移除凭据和真实请求数据，并注明使用的 .NET、数据库版本及复现步骤。
 
-仓库目前未包含许可证文件。使用、修改或再分发前，请与维护者确认授权条件。
+本项目基于 [MIT License](LICENSE) 授权，可自由使用、修改和再分发，需保留原许可声明。

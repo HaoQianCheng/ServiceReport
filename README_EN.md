@@ -1,5 +1,11 @@
 # ServiceReport
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![.NET 7](https://img.shields.io/badge/.NET-7.0-512BD4.svg)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-10.0-239120.svg)](https://docs.microsoft.com/dotnet/csharp/)
+[![Blazor Server](https://img.shields.io/badge/UI-Blazor_Server-5C2D91.svg)](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+[![MySQL](https://img.shields.io/badge/Storage-MySQL-4479A1.svg)](https://www.mysql.com/)
+
 [简体中文](README.md) | English
 
 ServiceReport is an ASP.NET Core request-monitoring project with collection middleware, batched HTTP reporting, MySQL storage, and a Blazor Server dashboard built with Ant Design. It provides request, timing, and exception information for service troubleshooting and business analysis.
@@ -39,11 +45,11 @@ test/
 ├── ApiService/                      # Example API integrated with ServiceReport
 ├── Console/                         # Placeholder console example
 └── UI/                              # Separate example using HttpReports packages
-tmp/
+templates/
 └── ServiceReport.Ui.Web/             # UI host template referencing NuGet packages
 ```
 
-`test/UI` uses `HttpReports.Dashboard` and `HttpReports.MySQL`; it is not the ServiceReport UI used in this guide. The correct template location is [`tmp/ServiceReport.Ui.Web`](tmp/ServiceReport.Ui.Web), not `tem/ServiceReport.Ui.Web`.
+`test/UI` uses `HttpReports.Dashboard` and `HttpReports.MySQL`; it is not the ServiceReport UI used in this guide. The package-based host template is located at [`templates/ServiceReport.Ui.Web`](templates/ServiceReport.Ui.Web).
 
 ## Requirements
 
@@ -168,7 +174,7 @@ Merge this section into your application's `appsettings.json`. This configuratio
 
 ### Use the standalone UI template
 
-Copy [`tmp/ServiceReport.Ui.Web`](tmp/ServiceReport.Ui.Web) to use a package-based UI host. It references version `1.0.0` of `ServiceReport.Ui.Core` and `ServiceReport.Ui.Web.Core`; verify availability in your package feed separately. The database prerequisites and configuration are the same as for the source UI. Do not run both hosts on the same default ports.
+Copy [`templates/ServiceReport.Ui.Web`](templates/ServiceReport.Ui.Web) to use a package-based UI host. It references version `1.0.0` of `ServiceReport.Ui.Core` and `ServiceReport.Ui.Web.Core`; verify availability in your package feed separately. The database prerequisites and configuration are the same as for the source UI. Do not run both hosts on the same default ports.
 
 ![Original UI template example](https://user-images.githubusercontent.com/86709205/222441397-88ff73c5-f73c-4067-9152-72853dc1eef8.png)
 
@@ -184,6 +190,6 @@ Copy [`tmp/ServiceReport.Ui.Web`](tmp/ServiceReport.Ui.Web) to use a package-bas
 
 ## Contributing and license
 
-Report reproducible problems through [Issues](https://github.com/HaoQianCheng/ServiceReport/issues), or open a Pull Request with a clear description. Remove credentials and real request data before submitting, and include the .NET/database versions and reproduction steps.
+Report reproducible problems through [Issues](https://github.com/HaoQianCheng/ServiceReport/issues), or open a Pull Request with a clear description — see [CONTRIBUTING.md](CONTRIBUTING.md). Remove credentials and real request data before submitting, and include the .NET/database versions and reproduction steps.
 
-The repository currently contains no license file. Confirm permission with the maintainer before using, modifying, or redistributing the code.
+This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and redistribute it, provided the original notice is retained.

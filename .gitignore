@@ -1,48 +1,39 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
+## .NET 构建产物
+bin/
+obj/
+out/
 
-/test/UI/obj
-/test/UI/bin/Debug/net7.0
-/test/Console/obj
-/test/Console/bin/Debug/net7.0
-/test/ApiService/obj
-/test/ApiService/bin/Debug/net7.0
-/test/ApiService/ApiService.csproj.user
-/src/ServiceReport.Ui/ServiceReport.Ui.Web.Core/ServiceReport.Ui.Web.Core.csproj.user
-/src/ServiceReport.Ui/ServiceReport.Ui.Web.Core/obj
-/src/ServiceReport.Ui/ServiceReport.Ui.Web.Core/bin/Debug/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Web/ServiceReport.Ui.Web.csproj.user
-/src/ServiceReport.Ui/ServiceReport.Ui.Web/obj
-/src/ServiceReport.Ui/ServiceReport.Ui.Web/bin/Debug/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Storage/obj
-/src/ServiceReport.Ui/ServiceReport.Ui.Storage/bin/Debug/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Core/obj
-/src/ServiceReport.Ui/ServiceReport.Ui.Core/bin/Debug/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Core/.vs/ServiceReport.Ui.Core
-/src/ServiceReport.Saver.Http/obj
-/src/ServiceReport.Saver.Http/bin/Debug/net7.0
-/src/ServiceReport.Saver.Abstract/obj
-/src/ServiceReport.Saver.Abstract/bin/Debug/net7.0
-/src/ServiceReport.Core/obj
-/src/ServiceReport.Core/bin/Debug/net7.0
-/src/ServiceReport/obj
-/src/ServiceReport/bin/Debug/net7.0
-/ServiceReport.Ui.Web.Core/obj
-/.vs
-/test/UI/UI.csproj.user
-/src/ServiceReport.Saver.Http/bin/Release/net7.0
-/src/ServiceReport.Saver.Abstract/bin/Release/net7.0
-/src/ServiceReport/bin/Release
-/ServiceReport.Dashboard/obj
-/ServiceReport.Dashboard/bin/Release/net7.0
-/test/ApiService/bin/Release/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Web.Core/bin/Release
-/src/ServiceReport.Ui/ServiceReport.Ui.Web/bin/Release/net7.0
-/src/ServiceReport.Ui/ServiceReport.Ui.Core/bin/Release
-/src/ServiceReport.Core/bin/Release
-/ServiceReport.Dashboard/ServiceReport.Dashboard.csproj.user
-/src/ServiceReport.Ui/ServiceReport.Ui.Storage/bin/Release
-/tmp/ServiceReport.Ui.Web/obj
-/tmp/ServiceReport.Ui.Web/bin
+## Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
 *.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Ll]ogs/
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## 测试与覆盖率
+TestResults/
+*.coverage
+*.trx
+
+## 发布产物
+*.pubxml
+*.pubxml.user
+
+## 操作系统与临时文件
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+## 本地配置（含敏感信息时勿提交）
+appsettings.*.local.json
+*.local.json
